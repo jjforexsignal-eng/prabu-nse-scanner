@@ -82,7 +82,7 @@ SYMBOLS = [
     "ADANIPORTS.NS",
     "MARUTI.NS",
     "M&M.NS",
-    "TATAMOTORS.NS",
+
 
     "SUNPHARMA.NS",
     "CIPLA.NS",

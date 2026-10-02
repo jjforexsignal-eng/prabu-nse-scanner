@@ -1,10 +1,18 @@
 name: PRABU GANN NSE Scanner
 
 on:
-  schedule:
-    # Every 5 minutes, Monday-Friday,
-    # during NSE market hours.
-    - cron: "*/5 9-15 * * 1-5"
+    schedule:
+
+    # 09:15, 09:20 ... 09:55
+    - cron: "15-55/5 9 * * 1-5"
+      timezone: "Asia/Kolkata"
+
+    # 10:00 ... 14:55
+    - cron: "*/5 10-14 * * 1-5"
+      timezone: "Asia/Kolkata"
+
+    # 15:00 ... 15:30
+    - cron: "*/5 15 * * 1-5"
       timezone: "Asia/Kolkata"
 
   # Allows manual testing from Actions

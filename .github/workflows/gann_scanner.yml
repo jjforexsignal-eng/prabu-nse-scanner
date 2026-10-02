@@ -1,0 +1,64 @@
+name: PRABU GANN NSE Scanner
+
+on:
+  schedule:
+    # Every 5 minutes, Monday-Friday,
+    # during NSE market hours.
+    - cron: "*/5 9-15 * * 1-5"
+      timezone: "Asia/Kolkata"
+
+  # Allows manual testing from Actions
+  workflow_dispatch:
+
+jobs:
+  gann-scan:
+
+    runs-on: ubuntu-latest
+
+    env:
+      TELEGRAM_TOKEN: ${{ secrets.TELEGRAM_TOKEN }}
+      TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+
+    steps:
+
+      # --------------------------------------------------
+      # Checkout repository
+      # --------------------------------------------------
+
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      # --------------------------------------------------
+      # Python
+      # --------------------------------------------------
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.13"
+          cache: "pip"
+
+      # --------------------------------------------------
+      # Dependencies
+      # --------------------------------------------------
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      # --------------------------------------------------
+      # Verify scanner
+      # --------------------------------------------------
+
+      - name: Check scanner
+        run: |
+          python -m py_compile scanners/gann_scanner.py
+
+      # --------------------------------------------------
+      # Run scanner
+      # --------------------------------------------------
+
+      - name: Run GANN scanner
+        run: |
+          python scanners/gann_scanner.py

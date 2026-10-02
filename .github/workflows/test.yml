@@ -1,0 +1,26 @@
+name: PRABU Scanner Test
+
+on:
+  workflow_dispatch:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Show test message
+        run: |
+          echo "======================================"
+          echo "PRABU NSE SCANNER TEST"
+          echo "GitHub Actions is working!"
+          echo "======================================"
+
+      - name: Show date and time
+        run: |
+          date
+          echo "Timezone:"
+          timedatectl || true
+
+      - name: Show Python version
+        run: |
+          python --version

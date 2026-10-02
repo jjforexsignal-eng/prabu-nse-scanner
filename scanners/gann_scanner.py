@@ -945,13 +945,20 @@ def scan_market():
     )
     print("=" * 80)
 
-    if not market_is_open():
+  #  if not market_is_open():
 
-        print(
-            "Market is closed."
-        )
+  #      print(
+  #          "Market is closed."
+  #      )
 
-        return
+  #      return
+
+
+    # TEST MODE
+    # Allow manual GitHub Actions testing outside NSE hours.
+    # Remove this test override before production scheduling.
+
+    print("TEST MODE: Market-hours check bypassed.")
 
     signals = 0
 

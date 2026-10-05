@@ -2,10 +2,16 @@ name: PRABU GANN NSE Scanner
 
 on:
   schedule:
-    - cron: "*/5 9-14 * * 1-5"
+    # 09:15 to 09:55
+    - cron: "15,20,25,30,35,40,45,50,55 9 * * 1-5"
       timezone: "Asia/Kolkata"
 
-    - cron: "*/5 15 * * 1-5"
+    # 10:00 to 14:55
+    - cron: "*/5 10-14 * * 1-5"
+      timezone: "Asia/Kolkata"
+
+    # 15:00 to 15:25
+    - cron: "0,5,10,15,20,25 15 * * 1-5"
       timezone: "Asia/Kolkata"
 
   workflow_dispatch:
